@@ -1,5 +1,5 @@
 import React, { useEffect, useId, useRef, useState } from "react"
-import { motion } from "motion/react"
+import { motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
