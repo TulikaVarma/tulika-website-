@@ -43,7 +43,7 @@ function hexToRgb(hex) {
 export const Particles = ({
   className = "",
   quantity = 100,
-  staticity = 50,
+  staticity = 30,
   ease = 50,
   size = 0.4,
   refresh = false,
@@ -149,7 +149,7 @@ export const Particles = ({
     const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1))
     const dx = (Math.random() - 0.5) * 0.1
     const dy = (Math.random() - 0.5) * 0.1
-    const magnetism = 0.1 + Math.random() * 4
+    const magnetism = 0.5 + Math.random() * 4
     return {
       x,
       y,

@@ -1,39 +1,41 @@
 /** @type {import('tailwindcss').Config} */
-import animate from "tailwindcss-animate";
-
 export default {
+  darkMode: ["class"],
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
+      fontFamily: {
+        mono: ['JetBrains Mono', 'Fira Code', 'Consolas', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
       colors: {
-        // Map your CSS variables to Tailwind names
-        border: "hsl(var(--border))",
-        foreground: "hsl(var(--foreground))",
+        tech: {
+          blue: {
+            light: '#0066CE',  // Brightest blue
+            DEFAULT: '#00468C', // Medium blue
+            dark: '#003A67',   // Dark blue
+          },
+          dark: {
+            lighter: '#1F2937', // Lightest dark gray
+            DEFAULT: '#111827',  // Medium dark
+            darker: '#0A0F1A',  // Darkest
+          }
+        },
+        
+        // ... keep the rest of your colors
         background: "hsl(var(--background))",
-        card: "hsl(var(--card))",
-        "card-foreground": "hsl(var(--card-foreground))",
-        popover: "hsl(var(--popover))",
-        "popover-foreground": "hsl(var(--popover-foreground))",
-        primary: "hsl(var(--primary))",
-        "primary-foreground": "hsl(var(--primary-foreground))",
-        secondary: "hsl(var(--secondary))",
-        "secondary-foreground": "hsl(var(--secondary-foreground))",
-        muted: "hsl(var(--muted))",
-        "muted-foreground": "hsl(var(--muted-foreground))",
-        accent: "hsl(var(--accent))",
-        "accent-foreground": "hsl(var(--accent-foreground))",
-        destructive: "hsl(var(--destructive))",
-        "destructive-foreground": "hsl(var(--destructive-foreground))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
+        foreground: "hsl(var(--foreground))",
+        // ... rest of shadcn colors
       },
       borderRadius: {
-        DEFAULT: "var(--radius)",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
     },
   },
-  plugins: [animate],
-};
+  plugins: [],
+}
