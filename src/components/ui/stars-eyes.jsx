@@ -9,15 +9,12 @@ const StarCharacter = ({ top, left, size = 1, rotation = 0, scrollY, speed = 0.5
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // 1. Movement Math: Speed determines how fast they fly up
+  // Star Movement speed 
   const pixelOffset = scrollY * speed;
-  
-  // 2. Fade Out Math: 
-  // We calculate where the star is relative to the top (0).
-  // As 'top' percentage converted to pixels minus the offset approaches 0, opacity drops.
+  // Stars fade away 
   const initialTopPx = (window.innerHeight * parseFloat(top)) / 100;
   const currentPosPx = initialTopPx - pixelOffset;
-  const opacity = Math.max(0, Math.min(1, currentPosPx / 200)); // Fades out completely in the top 200px
+  const opacity = Math.max(0, Math.min(1, currentPosPx / 200)); 
 
   const calculateEyeMove = (xBase, yBase) => {
     const xPx = (window.innerWidth * parseFloat(xBase)) / 100;
@@ -36,7 +33,6 @@ const StarCharacter = ({ top, left, size = 1, rotation = 0, scrollY, speed = 0.5
         left: left,
         top: top,
         opacity: opacity,
-        // translate3d(x, y, z) is smoother than 'top' because it uses the GPU
         transform: `translate3d(-50%, calc(-50% - ${pixelOffset}px), 0) scale(${size}) rotate(${rotation}deg)`, 
         transformOrigin: 'center center',
         display: 'inline-block',
@@ -82,10 +78,10 @@ export const StarBackground = () => {
   // starData with added 'speed' property for depth
   const starData = [
     // Stars above title 
-    { top: "15%", left: "8%", size: 0.4, rotation: -20, speed: 0.3 },
-    { top: "20%", left: "30%", size: 0.6, rotation: 10, speed: 0.4 },
-    { top: "18%", left: "55%", size: 0.3, rotation: 15, speed: 0.3 },
-    { top: "20%", left: "85%", size: 0.4, rotation: -10, speed: 0.2 },
+    { top: "10%", left: "8%", size: 0.4, rotation: -20, speed: 0.3 },
+    { top: "15%", left: "30%", size: 0.6, rotation: 10, speed: 0.4 },
+    { top: "13%", left: "55%", size: 0.3, rotation: 15, speed: 0.3 },
+    { top: "16%", left: "85%", size: 0.4, rotation: -10, speed: 0.2 },
     //Stars on the sides
     { top: "45%", left: "7%", size: 0.5, rotation: -10, speed: 0.7 },
     { top: "50%", left: "88%", size: 0.5, rotation: 20, speed: 0.6 },
