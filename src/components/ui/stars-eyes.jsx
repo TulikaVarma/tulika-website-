@@ -88,7 +88,7 @@ export const StarBackground = () => {
     { top: "14%", left: "55%", size: 0.5, rotation: 15, speed: 0.2 },
     { top: "20%", left: "85%", size: 0.6, rotation: -10, speed: 0.4 },
     // Middle Row (Sides)
-    { top: "45%", left: "10%", size: 0.8, rotation: -20, speed: 0.5 },
+    { top: "45%", left: "7%", size: 0.8, rotation: -20, speed: 0.5 },
     { top: "52%", left: "88%", size: 0.7, rotation: 25, speed: 0.6 },
     // Bottom Row 
     { top: "78%", left: "15%", size: 1.0, rotation: -10, speed: 0.8 },
