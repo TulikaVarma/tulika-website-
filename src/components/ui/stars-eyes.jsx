@@ -17,7 +17,7 @@ const StarCharacter = ({ top, left, size = 1, rotation = 0, scrollY, speed = 0.5
   // Fade logic based on scroll position
   const initialTopPx = (typeof window !== 'undefined' ? window.innerHeight : 800) * (parseFloat(top) / 100);
   const currentPosPx = initialTopPx - pixelOffset;
-  const opacity = Math.max(0, Math.min(1, currentPosPx / 200)); 
+  const opacity = Math.max(0, Math.min(1, (currentPosPx + 100) / 400));
 
   // Eye tracking logic
   const calculateEyeMove = (xBase, yBase) => {
@@ -83,18 +83,18 @@ export const StarBackground = () => {
 
   const starData = [
     // Top Row (Above Name)
-    { top: "12%", left: "8%", size: 0.7, rotation: -15, speed: 0.2 },
-    { top: "18%", left: "30%", size: 0.9, rotation: 10, speed: 0.3 },
-    { top: "14%", left: "55%", size: 0.5, rotation: 15, speed: 0.2 },
-    { top: "20%", left: "85%", size: 0.6, rotation: -10, speed: 0.4 },
+    { top: "12%", left: "8%", size: 0.7, rotation: -15, speed: 1.2 },
+    { top: "18%", left: "30%", size: 0.9, rotation: 10, speed: 1.8 },
+    { top: "14%", left: "55%", size: 0.5, rotation: 15, speed: 1.5 },
+    { top: "20%", left: "85%", size: 0.6, rotation: -10, speed: 1.3 },
     // Middle Row (Sides)
-    { top: "45%", left: "7%", size: 0.8, rotation: -20, speed: 0.5 },
-    { top: "52%", left: "88%", size: 0.7, rotation: 25, speed: 0.6 },
+    { top: "45%", left: "7%", size: 0.8, rotation: -20, speed: 1.2 },
+    { top: "52%", left: "88%", size: 0.7, rotation: 25, speed: 1.5 },
     // Bottom Row 
-    { top: "78%", left: "15%", size: 1.0, rotation: -10, speed: 0.8 },
-    { top: "92%", left: "35%", size: 0.4, rotation: -5, speed: 0.5 },
-    { top: "88%", left: "75%", size: 0.9, rotation: 15, speed: 0.7 },
-    { top: "72%", left: "92%", size: 0.4, rotation: -25, speed: 0.3 },
+    { top: "78%", left: "15%", size: 1.0, rotation: -10, speed: 1.2 },
+    { top: "92%", left: "35%", size: 0.4, rotation: -5, speed: 1.0 },
+    { top: "88%", left: "75%", size: 0.9, rotation: 15, speed: 1.2},
+    { top: "72%", left: "92%", size: 0.4, rotation: -25, speed: 1.4 },
   ];
 
   return (
