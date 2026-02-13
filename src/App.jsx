@@ -78,20 +78,21 @@ function App() {
             className="text-center"
           >
             <div className="text-[#0066CE] font-mono text-sm mb-4">
-              PS. the stars are watching you!
+              // Proof_by_Interaction: the stars are watching you!
             </div>
             
             <h1 className="text-6xl md:text-8xl font-bold text-white mb-6">
               Tulika Varma
             </h1>
             
-            <div className="text-2xl md:text-3xl text-gray-300 font-mono mb-8">
+            <div className="text-xl md:text-2xl text-gray-300 font-mono mb-8">
               <MorphingText 
                 texts={[
-                  "CS_Student.exe",
-                  "Math_Enthusiast.py", 
-                  "Problem_Solver.cpp",
-                  "Full_Stack_Dev.js"
+                  "train_model.py",       
+                  "convolve_image.cpp",   
+                  "query_database.sql",   
+                  "superpose_state.qc",   
+                  "deploy_pipeline.yaml"  
                 ]}
               />
             </div>
@@ -100,18 +101,11 @@ function App() {
               Building solutions to complex problems through code and mathematics
             </p>
             
-            <div className="flex gap-4 justify-center font-mono">
+            <div className="flex gap-4 justify-center font-mono mt-8">
               <Button 
-                onClick={() => scrollToSection('work')}
-                className="bg-[#0066CE] hover:bg-[#00468C] text-white px-8 py-6 text-base border border-[#0066CE]"
+                className="bg-transparent text-white border border-white/20 hover:border-[#0066CE] hover:bg-[#0066CE]/10 hover:text-white px-8 py-6 text-base transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(0,102,206,0.3)]"
               >
-                {'>'} View Work
-              </Button>
-              <Button 
-                variant="outline"
-                className="border-2 border-[#0066CE] text-white hover:bg-[#0066CE]/10 px-8 py-6 text-base"
-              >
-                {'>'} Download CV
+                {'>'} get_resume.sh 
               </Button>
             </div>
           </motion.div>
