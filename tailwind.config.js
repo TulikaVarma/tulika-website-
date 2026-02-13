@@ -12,23 +12,52 @@ export default {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+
         tech: {
           blue: {
-            light: '#0066CE',  // Brightest blue
-            DEFAULT: '#00468C', // Medium blue
-            dark: '#003A67',   // Dark blue
+            light: '#0066CE',
+            DEFAULT: '#00468C',
+            dark: '#003A67',
           },
           dark: {
-            lighter: '#1F2937', // Lightest dark gray
-            DEFAULT: '#111827',  // Medium dark
-            darker: '#0A0F1A',  // Darkest
+            lighter: '#1F2937',
+            DEFAULT: '#111827',
+            darker: '#0A0F1A',
           }
         },
-        
-        // ... keep the rest of your colors
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        // ... rest of shadcn colors
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -37,5 +66,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")], 
 }
