@@ -331,9 +331,9 @@ function App() {
 
       {/* SKILLS SECTION */}
       <section id="skills" className="relative w-full min-h-screen bg-[#040409] py-32 px-6 z-30">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-24">
             <div className="font-mono text-[#0066CE] text-sm mb-4">
               {'// Technical Skills'}
             </div>
@@ -342,82 +342,185 @@ function App() {
             </h2>
           </div>
 
-          {/* Skills Grid - Centered on larger screens */}
-          <div className="flex justify-center">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl w-full">
-              {[
-                { 
-                  title: "Languages", 
-                  skills: ["Python", "C++", "SQL", "RISC-V", "JavaScript"], 
-                  icon: "{ }",
-                  color: "from-blue-500/20 to-cyan-500/20"
-                },
-                { 
-                  title: "Web Development", 
-                  skills: ["React", "Tailwind CSS", "HTML/CSS", "Framer Motion", "Node.js"], 
-                  icon: "</>",
-                  color: "from-blue-500/20 to-cyan-500/20"
-                },
-                { 
-                  title: "Tools & Libraries", 
-                  skills: ["Git", "VS Code", "LaTeX", "NumPy", "Pandas", "Jupyter", "MATLAB"], 
-                  icon: "🔧",
-                  color: "from-blue-500/20 to-cyan-500/20"
-                },
-              ].map((category, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className="group"
+          {/* Stacking Cards Container */}
+          <div className="relative space-y-[-2rem]">
+            {[
+              { 
+                title: "Languages", 
+                skills: ["Python", "C++", "SQL", "RISC-V", "JavaScript", "Bash/Shell"], 
+                icon: "{ }",
+                color: "from-blue-600/30 to-cyan-600/30",
+                borderColor: "border-blue-500/50",
+                layer: 1
+              },
+              { 
+                title: "Web Development", 
+                skills: ["React", "Tailwind CSS", "HTML/CSS", "Node.js"], 
+                icon: "</>",
+                color: "from-blue-500/30 to-cyan-500/30",
+                borderColor: "border-blue-400/50",
+                layer: 2
+              },
+              { 
+                title: "Tools & DevOps", 
+                skills: ["Git", "Docker", "Linux", "VS Code", "LaTeX", "MATLAB"], 
+                icon: "🔧",
+                color: "from-blue-400/30 to-cyan-400/30",
+                borderColor: "border-blue-300/50",
+                layer: 3
+              },
+              { 
+                title: "Data & ML", 
+                skills: ["NumPy", "Pandas", "PyTorch", "scikit-learn", "Jupyter", "Matplotlib"], 
+                icon: "📊",
+                color: "from-blue-300/30 to-cyan-300/30",
+                borderColor: "border-blue-200/50",
+                layer: 4
+              },
+            ].map((category, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 100, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ 
+                  delay: index * 0.2,
+                  duration: 0.6,
+                  ease: "easeOut"
+                }}
+                style={{
+                  zIndex: 10 + index,
+                }}
+                className="group relative"
+              >
+                {/* Stack Shadow Effect */}
+                <div 
+                  className="absolute -inset-4 bg-[#0066CE]/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    transform: `translateY(${(4 - index) * 8}px)`,
+                  }}
+                />
+                
+                <Card className={`
+                  relative overflow-hidden
+                  bg-gradient-to-br from-[#0A0F1A]/95 to-[#0A0F1A]/80
+                  ${category.borderColor}
+                  border-2
+                  hover:border-[#0066CE] 
+                  hover:shadow-2xl hover:shadow-[#0066CE]/30
+                  transition-all duration-500
+                  backdrop-blur-xl
+                  transform hover:-translate-y-12 hover:scale-105
+                `}
+                style={{
+                  boxShadow: `0 ${(4 - index) * 4}px ${(4 - index) * 20}px rgba(0, 102, 206, ${0.1 + index * 0.05})`
+                }}
                 >
-                  <Card className={`
-                    relative overflow-hidden h-full
-                    bg-[#0A0F1A]/80 
-                    border-[#0066CE]/30 
-                    hover:border-[#0066CE] 
-                    hover:shadow-lg hover:shadow-[#0066CE]/20
-                    transition-all duration-300 
-                    backdrop-blur
-                  `}>
-                    {/* Gradient overlay on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-                    
-                    <CardHeader className="relative z-10">
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="text-4xl group-hover:scale-110 transition-transform duration-300">
-                          {category.icon}
-                        </span>
-                        <CardTitle className="text-gray-300 font-mono text-xl group-hover:text-[#0066CE] transition-colors">
-                          {category.title}
-                        </CardTitle>
+                  {/* Animated gradient background */}
+                  <div className={`
+                    absolute inset-0 bg-gradient-to-br ${category.color} 
+                    opacity-0 group-hover:opacity-100 
+                    transition-opacity duration-500
+                  `} />
+                  
+                  {/* Grid pattern overlay */}
+                  <div className="absolute inset-0 opacity-[0.03]" 
+                    style={{
+                      backgroundImage: `
+                        linear-gradient(rgba(0, 102, 206, 0.5) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(0, 102, 206, 0.5) 1px, transparent 1px)
+                      `,
+                      backgroundSize: '20px 20px'
+                    }}
+                  />
+
+                  <CardHeader className="relative z-10 pb-4">
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-1">
+                          <span className="text-5xl group-hover:scale-110 transition-transform duration-300">
+                            {category.icon}
+                          </span>
+                          <div>
+                            <CardTitle className="text-white font-bold text-2xl mb-1 group-hover:text-[#0066CE] transition-colors">
+                              {category.title}
+                            </CardTitle>
+                          </div>
+                        </div>
                       </div>
-                    </CardHeader>
-                    
-                    <CardContent className="relative z-10">
-                      <div className="space-y-2 font-mono text-sm">
-                        {category.skills.map((skill, i) => (
-                          <motion.div 
+                      
+                      {/* Stack indicator */}
+                      <div className="flex flex-col gap-1 opacity-30 group-hover:opacity-100 transition-opacity">
+                        {[...Array(4)].map((_, i) => (
+                          <div 
                             key={i}
-                            initial={{ opacity: 0, x: -10 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.1 + i * 0.05 }}
-                            className="text-gray-400 hover:text-[#0066CE] hover:translate-x-2 transition-all cursor-default flex items-center gap-2"
-                          >
-                            <span className="text-[#0066CE] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                            {skill}
-                          </motion.div>
+                            className={`h-1 rounded-full transition-all duration-300 ${
+                              i === index 
+                                ? 'w-8 bg-[#0066CE]' 
+                                : 'w-4 bg-gray-600'
+                            }`}
+                          />
                         ))}
                       </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
+                    </div>
+                  </CardHeader>
+                  
+                  <CardContent className="relative z-10 pt-4 border-t border-[#0066CE]/20">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                      {category.skills.map((skill, i) => (
+                        <motion.div 
+                          key={i}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: index * 0.2 + i * 0.05 }}
+                          className="
+                            relative
+                            bg-[#0066CE]/5
+                            border border-[#0066CE]/20
+                            rounded-lg px-3 py-2
+                            transition-all duration-300 cursor-default
+                          "
+                        >
+                          <span className="font-mono text-sm text-gray-300 transition-colors flex items-center gap-2">
+                            {skill}
+                          </span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </CardContent>
+
+                  {/* Bottom edge highlight */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#0066CE]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </Card>
+              </motion.div>
+            ))}
           </div>
+
+          {/* Stack visualization at bottom */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+            className="mt-16 text-center"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0066CE]/10 border border-[#0066CE]/30">
+              <div className="flex gap-1">
+                {[...Array(4)].map((_, i) => (
+                  <div 
+                    key={i}
+                    className="w-2 h-2 rounded-full bg-[#0066CE]"
+                    style={{
+                      opacity: 1 - (i * 0.2),
+                      animation: `pulse 2s ease-in-out ${i * 0.2}s infinite`
+                    }}
+                  />
+                ))}
+              </div>
+              <span className="font-mono text-xs text-[#0066CE]">
+                4 Layers Deep
+              </span>
+            </div>
+          </motion.div>
         </div>
       </section>
 
