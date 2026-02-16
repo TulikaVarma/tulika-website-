@@ -12,8 +12,9 @@ function App() {
   }
 
   return (
-    // Main Page 
     <div className="relative w-full min-h-screen bg-[#040409] font-sans">
+      
+      {/* BACKGROUND ANIMATIONS - Particles Global              */}
       <div className="fixed inset-0 z-40 pointer-events-none">
         <Particles
           className="absolute inset-0"
@@ -23,22 +24,27 @@ function App() {
           refresh={false}
         />
       </div>
-      <StarBackground />
-
+      
+      {/* NAVIGATION BAR - Global                                        */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm px-6 py-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
+          {/* Logo/Brand */}
           <div className="text-[#024f9b] font-mono text-xl font-bold">
             &lt;TulikaVarma/&gt;
           </div>
-
-          <div className="flex gap-4 font-mono text-sm">
+          {/* Navigation Links with Dropdowns */}
+          <div className="flex gap-4 font-mono text-sm"> 
+            {/* About Dropdown */}
             <div className="group relative">
               <button className="text-gray-400 hover:text-[#0066CE] hover:bg-[#0066CE]/10 px-4 py-2 rounded-md transition-all flex items-center gap-1">
                 .about() <span className="text-[10px]">▼</span>
               </button>
               <div className="absolute top-full left-0 hidden group-hover:block pt-2">
                 <div className="bg-[#040409] border border-[#0066CE]/30 rounded-md p-2 w-40 shadow-xl">
-                  <button onClick={() => scrollToSection('about')} className="w-full text-left px-3 py-2 text-gray-400 hover:text-white hover:bg-[#0066CE]/20 rounded transition-all">
+                  <button 
+                    onClick={() => scrollToSection('about')} 
+                    className="w-full text-left px-3 py-2 text-gray-400 hover:text-white hover:bg-[#0066CE]/20 rounded transition-all"
+                  >
                     → bio
                   </button>
                   <button className="w-full text-left px-3 py-2 text-gray-400 hover:text-white hover:bg-[#0066CE]/20 rounded transition-all">
@@ -47,29 +53,39 @@ function App() {
                 </div>
               </div>
             </div>
-            
+            {/* Work Dropdown */}
             <div className="group relative">
               <button className="text-gray-400 hover:text-[#0066CE] hover:bg-[#0066CE]/10 px-4 py-2 rounded-md transition-all flex items-center gap-1">
                 .work() <span className="text-[10px]">▼</span>
               </button>
               <div className="absolute top-full left-0 hidden group-hover:block pt-2">
                 <div className="bg-[#040409] border border-[#0066CE]/30 rounded-md p-2 w-40 shadow-xl">
-                  <button onClick={() => scrollToSection('work')} className="w-full text-left px-3 py-2 text-gray-400 hover:text-white hover:bg-[#0066CE]/20 rounded transition-all">
+                  <button 
+                    onClick={() => scrollToSection('work')} 
+                    className="w-full text-left px-3 py-2 text-gray-400 hover:text-white hover:bg-[#0066CE]/20 rounded transition-all"
+                  >
                     → projects
                   </button>
                 </div>
               </div>
             </div>
-            
-            <button onClick={() => scrollToSection('contact')} className="text-gray-400 hover:text-[#0066CE] hover:bg-[#0066CE]/10 px-4 py-2 rounded-md transition-all">
+            {/* Contact Link */}
+            <button 
+              onClick={() => scrollToSection('contact')} 
+              className="text-gray-400 hover:text-[#0066CE] hover:bg-[#0066CE]/10 px-4 py-2 rounded-md transition-all"
+            >
               .contact()
             </button>
           </div>
         </div>
       </nav>
 
+      {/* INTRODUCTION PAGE                                    */}
       <section className="relative w-full h-screen overflow-hidden">
+        {/* Animated  Background */}
         <MainBackground />
+        <StarBackground />
+        {/* Hero Content */}
         <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -77,14 +93,15 @@ function App() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
+            {/* Top Comment */}
             <div className="text-[#0066CE] font-mono text-sm mb-4">
               // Proof_by_Interaction: the stars are watching you!
-            </div>
-            
+            </div> 
+            {/* Name/Title */}
             <h1 className="text-6xl md:text-8xl font-bold text-white mb-6">
               Tulika Varma
             </h1>
-            
+            {/* Morphing File Names */}
             <div className="text-xl md:text-2xl text-gray-300 font-mono mb-8">
               <MorphingText 
                 texts={[
@@ -96,11 +113,11 @@ function App() {
                 ]}
               />
             </div>
-            
+            {/* Tagline */}
             <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-12 font-light">
-              Building solutions to complex problems through code and mathematics
+              Computing Science Major | Math Minor 
             </p>
-            
+            {/* CTA Button */}
             <div className="flex gap-4 justify-center font-mono mt-8">
               <Button 
                 className="bg-transparent text-white border border-white/20 hover:border-[#0066CE] hover:bg-[#0066CE]/10 hover:text-white px-8 py-6 text-base transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(0,102,206,0.3)]"
@@ -110,13 +127,15 @@ function App() {
             </div>
           </motion.div>
         </div>
-        
+        {/* Scroll Down Indicator */}
         <div 
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce cursor-pointer"
+          className="absolute bottom-8 w-full z-20 flex justify-center"
           onClick={() => scrollToSection('about')}
         >
-          <div className="text-gray-400 font-mono text-sm">scroll_down()</div>
-        </div>
+          <div className="animate-bounce cursor-pointer text-gray-400 font-mono text-sm hover:text-[#0066CE] transition-colors">
+            scroll_down()
+          </div>
+        </div>  
       </section>
 
       {/* ABOUT SECTION  */}
@@ -137,16 +156,28 @@ function App() {
             <div className="grid md:grid-cols-2 gap-16 pl-8">
               <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
                 <p>
-                  <span className="text-[#0066CE] font-mono">name:</span> <span className="text-white">"Tulika"</span>,
+                  <span className="text-[#0066CE] font-mono">name:</span> 
+                  <span className="text-white">"Tulika Varma"</span>,
                 </p>
+
                 <p>
-                  <span className="text-[#0066CE] font-mono">role:</span> <span className="text-white">"CS Student & Developer"</span>,
+                  <span className="text-[#0066CE] font-mono">role:</span> 
+                  <span className="text-white">"Computer Science Student"</span>,
                 </p>
+
                 <p>
-                  <span className="text-[#0066CE] font-mono">education:</span> <span className="text-white">"Computer Science Major, Math Minor"</span>,
+                  <span className="text-[#0066CE] font-mono">education:</span> 
+                  <span className="text-white">"BSc Computer Science, Minor in Mathematics"</span>,
                 </p>
+
                 <p className="pt-4">
-                  <span className="text-[#0066CE] font-mono">bio:</span> <span className="text-white">"I'm passionate about leveraging technology and mathematical thinking to solve real-world problems."</span>
+                  <span className="text-[#0066CE] font-mono">academicInterests:</span> 
+                  <span className="text-white">["Maching Learning and Data Mining", "Biomedical Image Analysis", "Discrete Mathematics and Graph Theory", "Quantum Computing"]</span>
+                </p>
+
+                <p>
+                  <span className= "text-[#0066CE] font-mono">approach:</span>
+                  <span className= "text-white"> "With training across machine learning, data-intensive systems, biomedical imaging, and quantum computing, I approach problems through a mathematically rigorous and research-driven lens. I’m especially interested in building interpretable, reliable intelligent systems grounded in strong theoretical foundations."</span>
                 </p>
               </div>
               
