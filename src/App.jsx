@@ -5,8 +5,11 @@ import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 import MainBackground from '@/components/ui/main-background'
 import { StarBackground } from './components/ui/stars-eyes'
+import { useState } from 'react'
+
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false)
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -26,59 +29,116 @@ function App() {
       </div>
       
       {/* NAVIGATION BAR - Global                                        */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm px-6 py-4">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          {/* Logo/Brand */}
-          <div className="text-[#024f9b] font-mono text-xl font-bold">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-4">
+        <div className="w-full flex justify-between items-center">
+          {/* Name */}
+          <div className="text-[#024f9b] font-mono text-base sm:text-lg md:text-xl font-bold flex-shrink-0">
             &lt;TulikaVarma/&gt;
           </div>
-          {/* Navigation Links with Dropdowns */}
-          <div className="flex gap-4 font-mono text-sm"> 
-            {/* About Dropdown */}
-            <div className="group relative">
-              <button className="text-gray-400 hover:text-[#0066CE] hover:bg-[#0066CE]/10 px-4 py-2 rounded-md transition-all flex items-center gap-1">
-                .about() <span className="text-[10px]">▼</span>
-              </button>
-              <div className="absolute top-full left-0 hidden group-hover:block pt-2">
-                <div className="bg-[#040409] border border-[#0066CE]/30 rounded-md p-2 w-40 shadow-xl">
-                  <button 
-                    onClick={() => scrollToSection('about')} 
-                    className="w-full text-left px-3 py-2 text-gray-400 hover:text-white hover:bg-[#0066CE]/20 rounded transition-all"
-                  >
-                    → bio
-                  </button>
-                  <button className="w-full text-left px-3 py-2 text-gray-400 hover:text-white hover:bg-[#0066CE]/20 rounded transition-all">
-                    → education
-                  </button>
-                </div>
-              </div>
-            </div>
-            {/* Work Dropdown */}
-            <div className="group relative">
-              <button className="text-gray-400 hover:text-[#0066CE] hover:bg-[#0066CE]/10 px-4 py-2 rounded-md transition-all flex items-center gap-1">
-                .work() <span className="text-[10px]">▼</span>
-              </button>
-              <div className="absolute top-full left-0 hidden group-hover:block pt-2">
-                <div className="bg-[#040409] border border-[#0066CE]/30 rounded-md p-2 w-40 shadow-xl">
-                  <button 
-                    onClick={() => scrollToSection('work')} 
-                    className="w-full text-left px-3 py-2 text-gray-400 hover:text-white hover:bg-[#0066CE]/20 rounded transition-all"
-                  >
-                    → projects
-                  </button>
-                </div>
-              </div>
-            </div>
-            {/* Contact Link */}
-            <button 
-              onClick={() => scrollToSection('contact')} 
-              className="text-gray-400 hover:text-[#0066CE] hover:bg-[#0066CE]/10 px-4 py-2 rounded-md transition-all"
-            >
-              .contact()
-            </button>
-          </div>
+          
+          {/* Menu Button */}
+          <button 
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="group relative w-10 h-10 flex flex-col justify-center items-center gap-1.5 rounded-md transition-all flex-shrink-0"
+            aria-label="Menu"
+          >
+            <span className="w-6 h-0.5 bg-gray-400 group-hover:bg-[#0066CE] transition-all duration-300 group-hover:rotate-45 group-hover:translate-y-1 origin-center"></span>
+            <span className="w-6 h-0.5 bg-gray-400 group-hover:bg-[#0066CE] transition-all duration-300 group-hover:-rotate-45 group-hover:-translate-y-1 origin-center"></span>
+          </button>
         </div>
       </nav>
+      {/* Side Panel Menu */}
+      <div 
+        className={`fixed top-0 right-0 h-full w-80 backdrop-blur-md border-l border-[#0066CE]/20 z-50 ${
+          menuOpen ? 'pointer-events-auto' : 'pointer-events-none'
+        }`}
+        style={{
+          clipPath: menuOpen 
+            ? 'circle(150% at 100% 0%)' 
+            : 'circle(0% at 100% 0%)',
+          transition: 'clip-path 0.8s cubic-bezier(0.65, 0, 0.35, 1)'
+        }}
+      >
+        {/* Close Button */}
+        <button 
+          onClick={() => setMenuOpen(false)}
+          className={`absolute top-4 right-6 text-gray-400 hover:text-white text-3xl transition-all duration-300 ${
+            menuOpen ? 'opacity-100 delay-300' : 'opacity-0'
+          }`}
+        >
+          ×
+        </button>
+
+        <div className={`p-8 pt-20 transition-opacity duration-500 ${
+          menuOpen ? 'opacity-100 delay-400' : 'opacity-0'
+        }`}>
+          {/* MENU Section */}
+          <div className="mb-12">
+            <h3 className="text-[#0066CE] text-xl font-mono mb-6">MENU</h3>
+            <div className="space-y-4">
+              <button 
+                onClick={() => { scrollToSection('home'); setMenuOpen(false); }}
+                className="flex items-center gap-3 text-white hover:text-[#0066CE] transition-colors group w-full"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#024f9b]"></span>
+                <span className="text-base">Home</span>
+              </button>
+              <button 
+                onClick={() => { scrollToSection('about'); setMenuOpen(false); }}
+                className="flex items-center gap-3 text-white hover:text-[#0066CE] transition-colors group w-full"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#0066CE]"></span>
+                <span className="text-base">About Me</span>
+              </button>
+              <button 
+                onClick={() => { scrollToSection('skills'); setMenuOpen(false); }}
+                className="flex items-center gap-3 text-white hover:text-[#0066CE] transition-colors group w-full"
+              >
+                <span className="w-2 h-2 rounded-full bg-sky-400"></span>
+                <span className="text-base">Skills</span>
+              </button>
+              <button 
+                onClick={() => { scrollToSection('work'); setMenuOpen(false); }}
+                className="flex items-center gap-3 text-white hover:text-[#0066CE] transition-colors group w-full"
+              >
+                <span className="w-2 h-2 rounded-full bg-blue-400"></span>
+                <span className="text-base">Projects</span>
+              </button>
+              <button 
+                onClick={() => { scrollToSection('contact'); setMenuOpen(false); }}
+                className="flex items-center gap-3 text-white hover:text-[#0066CE] transition-colors group w-full"
+              >
+                <span className="w-2 h-2 rounded-full bg-cyan-300"></span>
+                <span className="text-base">Contact</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Social Links */}
+          <div className="mb-12">
+            <h3 className="text-[#0066CE] text-xl font-mono mb-6">SOCIAL</h3>
+            <div className="space-y-3">
+              <a href="#" className="block text-gray-300 hover:text-[#0066CE] transition-colors">Github</a>
+              <a href="#" className="block text-gray-300 hover:text-[#0066CE] transition-colors">Linkedin</a>
+            </div>
+          </div>
+
+          {/* Email */}
+          <div>
+            <h3 className="text-[#0066CE] text-xl font-mono mb-6">GET IN TOUCH</h3>
+            <a href="mailto:tulikavarma@gmail.com" className="text-gray-300 hover:text-[#0066CE] transition-colors break-all">
+              tulikaavarma@gmail.com
+            </a>
+          </div>
+        </div>
+      </div>
+      {/* closes menu when clicking outside */}
+      {menuOpen && (
+        <div 
+          onClick={() => setMenuOpen(false)}
+          className="fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
+        ></div>
+      )}
 
       {/* INTRODUCTION PAGE                                    */}
       <section className="relative w-full h-screen overflow-hidden">
@@ -358,8 +418,6 @@ function App() {
               ))}
             </div>
           </div>
-
-          
         </div>
       </section>
 
