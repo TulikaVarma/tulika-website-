@@ -102,7 +102,7 @@ function App() {
               Tulika Varma
             </h1>
             {/* Morphing File Names */}
-            <div className="text-xl md:text-2xl text-gray-300 font-mono mb-8">
+            <div className="text-lg md:text-xl text-gray-300 font-mono mb-8">
               <MorphingText 
                 texts={[
                   "train_model.py",       
@@ -115,7 +115,7 @@ function App() {
             </div>
             {/* Tagline */}
             <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-12 font-light">
-              Computing Science Major | Math Minor 
+              Computer Science | Mathematics
             </p>
             {/* CTA Button */}
             <div className="flex gap-4 justify-center font-mono mt-8">
@@ -261,7 +261,7 @@ function App() {
                 </motion.div>
               </div>
             </div>
-             
+
             <div className="text-5xl md:text-6xl font-bold text-white mt-8">
               {'}'}
             </div>
@@ -272,49 +272,94 @@ function App() {
       {/* SKILLS SECTION */}
       <section id="skills" className="relative w-full min-h-screen bg-[#040409] py-32 px-6 z-30">
         <div className="max-w-7xl mx-auto">
-          <div className="font-mono text-[#0066CE] text-sm mb-4">
-            {'// Technical Skills'}
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <div className="font-mono text-[#0066CE] text-sm mb-4">
+              {'// Technical Skills'}
+            </div>
+            <h2 className="text-5xl md:text-6xl font-bold text-white">
+              tech<span className="text-[#0066CE]">Stack</span>[]
+            </h2>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-16">
-            tech<span className="text-[#0066CE]">Stack</span>[]
-          </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "Languages", skills: ["Python", "Java", "C++", "JavaScript", "SQL", "R"], icon: "{ }" },
-              { title: "Frontend", skills: ["React", "Tailwind CSS", "HTML/CSS", "Vite", "Framer Motion"], icon: "</>" },
-              { title: "Backend", skills: ["Node.js", "Express", "Flask", "PostgreSQL", "MongoDB"], icon: "⚙️" },
-              { title: "Tools & Math", skills: ["Git", "VS Code", "LaTeX", "NumPy", "Pandas", "Jupyter"], icon: "🔧" },
-            ].map((category, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-              >
-                {/* Updated Card background  */}
-                <Card className="bg-[#0A0F1A]/80 border-[#0066CE]/30 hover:border-[#0066CE] transition-all h-full backdrop-blur">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-3xl">{category.icon}</span>
-                      <CardTitle className="text-gray-300 font-mono text-xl">{category.title}</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-2 font-mono text-sm">
-                      {category.skills.map((skill, i) => (
-                        <div key={i} className="text-gray-400 hover:text-[#0066CE] transition-colors cursor-default">
-                          → {skill}
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          {/* Skills Grid - Centered on larger screens */}
+          <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl w-full">
+              {[
+                { 
+                  title: "Languages", 
+                  skills: ["Python", "C++", "SQL", "RISC-V", "JavaScript"], 
+                  icon: "{ }",
+                  color: "from-blue-500/20 to-cyan-500/20"
+                },
+                { 
+                  title: "Web Development", 
+                  skills: ["React", "Tailwind CSS", "HTML/CSS", "Framer Motion", "Node.js"], 
+                  icon: "</>",
+                  color: "from-blue-500/20 to-cyan-500/20"
+                },
+                { 
+                  title: "Tools & Libraries", 
+                  skills: ["Git", "VS Code", "LaTeX", "NumPy", "Pandas", "Jupyter", "MATLAB"], 
+                  icon: "🔧",
+                  color: "from-blue-500/20 to-cyan-500/20"
+                },
+              ].map((category, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="group"
+                >
+                  <Card className={`
+                    relative overflow-hidden h-full
+                    bg-[#0A0F1A]/80 
+                    border-[#0066CE]/30 
+                    hover:border-[#0066CE] 
+                    hover:shadow-lg hover:shadow-[#0066CE]/20
+                    transition-all duration-300 
+                    backdrop-blur
+                  `}>
+                    {/* Gradient overlay on hover */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                    
+                    <CardHeader className="relative z-10">
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="text-4xl group-hover:scale-110 transition-transform duration-300">
+                          {category.icon}
+                        </span>
+                        <CardTitle className="text-gray-300 font-mono text-xl group-hover:text-[#0066CE] transition-colors">
+                          {category.title}
+                        </CardTitle>
+                      </div>
+                    </CardHeader>
+                    
+                    <CardContent className="relative z-10">
+                      <div className="space-y-2 font-mono text-sm">
+                        {category.skills.map((skill, i) => (
+                          <motion.div 
+                            key={i}
+                            initial={{ opacity: 0, x: -10 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.1 + i * 0.05 }}
+                            className="text-gray-400 hover:text-[#0066CE] hover:translate-x-2 transition-all cursor-default flex items-center gap-2"
+                          >
+                            <span className="text-[#0066CE] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                            {skill}
+                          </motion.div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
           </div>
+
+          
         </div>
       </section>
 
