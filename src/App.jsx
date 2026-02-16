@@ -153,43 +153,115 @@ function App() {
               const <span className="text-[#0066CE]">about</span> = {'{'}
             </h2>
             
+            {/* Left Side - Info */}
             <div className="grid md:grid-cols-2 gap-16 pl-8">
               <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
                 <p>
                   <span className="text-[#0066CE] font-mono">name:</span> 
-                  <span className="text-white">"Tulika Varma"</span>,
+                  <span className="text-white"> "Tulika Varma"</span>,
                 </p>
 
                 <p>
                   <span className="text-[#0066CE] font-mono">role:</span> 
-                  <span className="text-white">"Computer Science Student"</span>,
+                  <span className="text-white"> "Computer Science Student"</span>,
                 </p>
 
                 <p>
                   <span className="text-[#0066CE] font-mono">education:</span> 
-                  <span className="text-white">"BSc Computer Science, Minor in Mathematics"</span>,
+                  <span className="text-white"> "BSc Computer Science, Minor in Mathematics"</span>,
                 </p>
 
                 <p className="pt-4">
                   <span className="text-[#0066CE] font-mono">academicInterests:</span> 
-                  <span className="text-white">["Maching Learning and Data Mining", "Biomedical Image Analysis", "Discrete Mathematics and Graph Theory", "Quantum Computing"]</span>
+                  <span className="text-white"> ["Machine Learning and Data Mining", "Biomedical Image Analysis", "Discrete Mathematics and Graph Theory", "Quantum Computing"]</span>,
                 </p>
 
                 <p>
-                  <span className= "text-[#0066CE] font-mono">approach:</span>
-                  <span className= "text-white"> "With training across machine learning, data-intensive systems, biomedical imaging, and quantum computing, I approach problems through a mathematically rigorous and research-driven lens. I’m especially interested in building interpretable, reliable intelligent systems grounded in strong theoretical foundations."</span>
+                  <span className="text-[#0066CE] font-mono">approach:</span>
+                  <span className="text-white"> "With training across machine learning, data-intensive systems, biomedical imaging, and quantum computing, I approach problems through a mathematically rigorous and research-driven lens. I'm especially interested in building interpretable, reliable intelligent systems grounded in strong theoretical foundations."</span>
                 </p>
               </div>
               
+              {/* Right Side - Animated Code Block */}
               <div className="flex items-center justify-center">
-                <div className="relative">
-                  <div className="w-80 h-80 rounded-lg bg-gradient-to-br from-[#0066CE] to-[#00468C] flex items-center justify-center text-white text-9xl font-bold shadow-2xl border-2 border-[#0066CE]">
-                    T
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-[#0A0F1A] border-2 border-[#0066CE]/40 rounded-lg p-8 font-mono text-sm backdrop-blur shadow-2xl hover:border-[#0066CE] transition-all w-full max-w-md"
+                >
+                  {/* Terminal Header */}
+                  <div className="flex items-center gap-2 mb-6 pb-3 border-b border-gray-700">
+                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    <span className="text-gray-500 ml-2 text-xs">tulika_varma.js</span>
                   </div>
-                </div>
+                  {/* Code Content */}
+                  <div className="space-y-3">
+                    <div className="text-gray-500">// Quick Facts</div>
+                    
+                    <div>
+                      <span className="text-purple-400">const</span>
+                      <span className="text-blue-400"> student</span>
+                      <span className="text-gray-400"> = {'{'}</span>
+                    </div>
+                    
+                    <div className="ml-4 space-y-2">
+                      <div>
+                        <span className="text-red-400">location:</span> 
+                        <span className="text-green-400"> "📍 Vancouver, Canada"</span>,
+                      </div>
+                      <div>
+                        <span className="text-red-400">focus:</span> 
+                        <span className="text-green-400"> "ML + Math"</span>,
+                      </div>
+                      <div>
+                        <span className="text-red-400">status:</span> 
+                        <span className="text-green-400"> "Seeking Internships"</span>,
+                      </div>
+                      <div>
+                        <span className="text-red-400">coffee:</span> 
+                        <span className="text-orange-400"> true</span>
+                      </div>
+                      <div>
+                        <span className="text-red-400">sleep_schedule:</span> 
+                        <span className="text-green-400"> "undefined"</span>,
+                      </div>
+                      <div>
+                        <span className="text-red-400">terminal_theme:</span> 
+                        <span className="text-green-400"> "Dark Mode Only"</span>,
+                      </div>
+                    </div>
+                    
+                    <div className="text-gray-400">{'}'};</div>
+
+                    <div className="mt-4 pt-4 border-t border-gray-700">
+                      <div className="text-gray-500 text-xs">$ node tulika_varma.js</div>
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5, duration: 0.3 }}
+                        className="text-green-400 text-xs mt-1"
+                      >
+                        ✓ Ready to build amazing things
+                      </motion.div>
+                    </div>
+
+                    {/* Blinking Cursor */}
+                    <div className="flex items-center gap-1">
+                      <span className="text-gray-500">$</span>
+                      <motion.span
+                        animate={{ opacity: [1, 0, 1] }}
+                        transition={{ duration: 1, repeat: Infinity }}
+                        className="inline-block w-2 h-4 bg-[#0066CE]"
+                      />
+                    </div>
+                  </div>
+                </motion.div>
               </div>
             </div>
-            
+             
             <div className="text-5xl md:text-6xl font-bold text-white mt-8">
               {'}'}
             </div>
