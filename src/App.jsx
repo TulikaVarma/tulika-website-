@@ -3,9 +3,10 @@ import { MorphingText } from '@/components/ui/morphing-text'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
+import Navbar from './components/ui/navbar'
 import MainBackground from '@/components/ui/main-background'
 import { StarBackground } from './components/ui/stars-eyes'
-import { useState } from "react";
+import { useState } from "react"
 import FloatingAmongUs from './components/ui/floating-amongus'
 
 
@@ -31,125 +32,7 @@ function App() {
       </div>
       
       {/* NAVIGATION BAR - Global                                        */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-4">
-        <div className="w-full flex justify-between items-center">
-          {/* Name */}
-          <div className="text-[#024f9b] font-mono text-base sm:text-lg md:text-xl font-bold flex-shrink-0">
-            &lt;TulikaVarma/&gt;
-          </div>
-          
-          {/* Menu Button */}
-          <button 
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="group relative w-10 h-10 flex flex-col justify-center items-center gap-1.5 rounded-md transition-all flex-shrink-0"
-            aria-label="Menu"
-          >
-            <span className="w-6 h-0.5 bg-gray-400 group-hover:bg-[#0066CE] transition-all duration-300 group-hover:rotate-45 group-hover:translate-y-1 origin-center"></span>
-            <span className="w-6 h-0.5 bg-gray-400 group-hover:bg-[#0066CE] transition-all duration-300 group-hover:-rotate-45 group-hover:-translate-y-1 origin-center"></span>
-          </button>
-        </div>
-      </nav>
-      {/* Side Panel Menu */}
-      <div 
-        className={`fixed top-0 right-0 h-full w-80 backdrop-blur-md border-l border-[#0066CE]/20 z-50 ${
-          menuOpen ? 'pointer-events-auto' : 'pointer-events-none'
-        }`}
-        style={{
-          clipPath: menuOpen 
-            ? 'circle(150% at 100% 0%)' 
-            : 'circle(0% at 100% 0%)',
-          transition: 'clip-path 0.8s cubic-bezier(0.65, 0, 0.35, 1)'
-        }}
-      >
-        {/* Close Button */}
-        <button 
-          onClick={() => setMenuOpen(false)}
-          className={`absolute top-4 right-6 text-gray-400 hover:text-white text-3xl transition-all duration-300 ${
-            menuOpen ? 'opacity-100 delay-300' : 'opacity-0'
-          }`}
-        >
-          ×
-        </button>
-
-        <div className={`p-8 pt-20 transition-opacity duration-500 ${
-          menuOpen ? 'opacity-100 delay-400' : 'opacity-0'
-        }`}>
-          {/* MENU Section */}
-          <div className="mb-12">
-            <h3 className="text-[#0066CE] text-xl font-mono mb-6">MENU</h3>
-            <div className="space-y-4">
-              <button 
-                onClick={() => { scrollToSection('home'); setMenuOpen(false); }}
-                className="flex items-center gap-3 text-white hover:text-[#0066CE] transition-colors group w-full"
-              >
-                <span className="w-2 h-2 rounded-full bg-[#024f9b]"></span>
-                <span className="text-base">Home</span>
-              </button>
-              <button 
-                onClick={() => { scrollToSection('about'); setMenuOpen(false); }}
-                className="flex items-center gap-3 text-white hover:text-[#0066CE] transition-colors group w-full"
-              >
-                <span className="w-2 h-2 rounded-full bg-[#0066CE]"></span>
-                <span className="text-base">About Me</span>
-              </button>
-              <button 
-                onClick={() => { scrollToSection('skills'); setMenuOpen(false); }}
-                className="flex items-center gap-3 text-white hover:text-[#0066CE] transition-colors group w-full"
-              >
-                <span className="w-2 h-2 rounded-full bg-sky-400"></span>
-                <span className="text-base">Skills</span>
-              </button>
-              <button 
-                onClick={() => { scrollToSection('work'); setMenuOpen(false); }}
-                className="flex items-center gap-3 text-white hover:text-[#0066CE] transition-colors group w-full"
-              >
-                <span className="w-2 h-2 rounded-full bg-blue-400"></span>
-                <span className="text-base">Projects</span>
-              </button>
-              <button 
-                onClick={() => { scrollToSection('contact'); setMenuOpen(false); }}
-                className="flex items-center gap-3 text-white hover:text-[#0066CE] transition-colors group w-full"
-              >
-                <span className="w-2 h-2 rounded-full bg-cyan-300"></span>
-                <span className="text-base">Contact</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Social Links */}
-          <div className="mb-12">
-            <h3 className="text-[#0066CE] text-xl font-mono mb-6">SOCIAL</h3>
-            <div className="space-y-3">
-              <a href="https://github.com/TulikaVarma" className="block text-gray-300 hover:text-[#0066CE] transition-colors">Github</a>
-              <a href="https://www.linkedin.com/in/tulika-varma-962165278/?originalSubdomain=ca" className="block text-gray-300 hover:text-[#0066CE] transition-colors">Linkedin</a>
-            </div>
-          </div>
-
-          {/* Email */}
-          <div>
-            
-            <h3 className="text-[#0066CE] text-xl font-mono mb-6">GET IN TOUCH</h3>
-            <a href="mailto:tulikavarma@gmail.com" 
-              className="text-gray-300 hover:text-[#0066CE] transition-colors break-all"
-              onClick={(e) => {
-                e.preventDefault(); 
-                navigator.clipboard.writeText("tulikaavarma@gmail.com");
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2000);
-              }}
-            >
-              {copied ? "Copied to clipboard" : "tulikaavarma@gmail.com"}
-            </a>
-          </div>
-        </div>
-      </div>
-      {/* closes menu when clicking outside */}
-      {menuOpen && (
-        <div 
-          onClick={() => setMenuOpen(false)}
-          className="fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
-        ></div>
-      )}
+      <Navbar scrollToSection={scrollToSection}/>
 
       {/* INTRODUCTION PAGE                                    */}
       <section id="home" className="relative w-full h-screen overflow-hidden">
@@ -545,29 +428,132 @@ function App() {
             recent<span className="text-[#0066CE]">Work</span>()
           </h2>
 
-          <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 w-full">
+            {/* LARGE FEATURED CARD */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.02, y: -8, zIndex: 50, transition: { duration: 0.2 } }}
               viewport={{ once: true }}
-              whileHover={{ x: 10 }}
-              className="group"
+              className="md:col-span-2 md:row-span-2 group cursor-pointer relative"
+              onClick={() => window.open("https://github.com/TulikaVarma/obesity-risk-analysis", "_blank")}
             >
-              <Card className="bg-[#0A0F1A]/80 border-[#0066CE]/30 hover:border-[#0066CE] transition-all backdrop-blur overflow-hidden">
-                <div className="grid md:grid-cols-3 gap-6 p-8">
-                  <div className="md:col-span-2 space-y-4">
-                    <div className="flex items-center gap-4">
-                      <div className="text-[#0066CE] font-mono text-sm">01</div>
-                      <h3 className="text-3xl font-bold text-white group-hover:text-[#0066CE] transition-colors">Project Name Here</h3>
-                    </div>
-                    <p className="text-gray-400 text-lg">Description of your CS/Math project.</p>
+              <div className="absolute -inset-1 bg-[#0066CE]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+              <div className="relative h-full bg-[#0A0F1A]/80 border border-[#0066CE]/30 group-hover:border-[#0066CE] rounded-2xl transition-all duration-300 p-8 flex flex-col justify-between min-h-[320px]">
+                <div className="absolute inset-0 bg-[#0066CE]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="text-[#0066CE] font-mono text-sm">01</div>
+                    <span className="text-xs font-mono text-gray-500 border border-gray-700 px-2 py-1 rounded-full">CMPT 459 · Group Project</span>
                   </div>
-                  <div className="flex flex-col justify-center gap-3">
-                    <Button className="bg-[#0066CE] hover:bg-[#00468C] text-white font-mono w-full">View Project →</Button>
+                  <h3 className="text-3xl font-bold text-white group-hover:text-[#0066CE] transition-colors mb-4">
+                    Obesity Risk Analysis
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed mb-6">
+                    ML pipeline for obesity classification using clustering, outlier detection, and feature selection. Implemented k-NN, Logistic Regression, and Random Forest with hyperparameter tuning.
+                  </p>
+                  <div className="flex flex-wrap gap-2 font-mono">
+                    {["Python", "scikit-learn", "pandas", "DBSCAN", "Random Forest", "LASSO"].map((tag) => (
+                      <span key={tag} className="text-xs text-[#0066CE] border border-[#0066CE]/30 group-hover:border-[#0066CE]/50 group-hover:bg-[#0066CE]/10 px-2 py-1 rounded-lg transition-all duration-300">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              </Card>
+                <div className="relative z-10 mt-6 font-mono text-sm text-[#0066CE] group-hover:translate-x-2 transition-transform">
+                  View on GitHub →
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl" />
+                <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-l-2xl" />
+              </div>
             </motion.div>
+
+            {/* SMALL CARD 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.02, y: -8, zIndex: 50, transition: { duration: 0.2 } }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="group cursor-pointer relative"
+              onClick={() => window.open("#", "_blank")}
+            >
+              <div className="absolute -inset-1 bg-[#0066CE]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+              <div className="relative h-full bg-[#0A0F1A]/80 border border-[#0066CE]/30 group-hover:border-[#0066CE] rounded-2xl transition-all duration-300 p-6 flex flex-col justify-between min-h-[150px]">
+                <div className="absolute inset-0 bg-[#0066CE]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="text-[#0066CE] font-mono text-sm">02</div>
+                    <span className="text-xs font-mono text-gray-500 border border-gray-700 px-2 py-1 rounded-full">Coming Soon</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white group-hover:text-[#0066CE] transition-colors mb-2">Project 2</h3>
+                  <p className="text-gray-400 text-sm">Add your next project here.</p>
+                </div>
+                <div className="relative z-10 mt-4 font-mono text-sm text-[#0066CE] group-hover:translate-x-2 transition-transform">
+                  View on GitHub →
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl" />
+                <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-l-2xl" />
+              </div>
+            </motion.div>
+
+            {/* SMALL CARD 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.02, y: -8, zIndex: 50, transition: { duration: 0.2 } }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="group cursor-pointer relative"
+              onClick={() => window.open("#", "_blank")}
+            >
+              <div className="absolute -inset-1 bg-[#0066CE]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+              <div className="relative h-full bg-[#0A0F1A]/80 border border-[#0066CE]/30 group-hover:border-[#0066CE] rounded-2xl transition-all duration-300 p-6 flex flex-col justify-between min-h-[150px]">
+                <div className="absolute inset-0 bg-[#0066CE]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="text-[#0066CE] font-mono text-sm">03</div>
+                    <span className="text-xs font-mono text-gray-500 border border-gray-700 px-2 py-1 rounded-full">Coming Soon</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white group-hover:text-[#0066CE] transition-colors mb-2">Project 3</h3>
+                  <p className="text-gray-400 text-sm">Add your next project here.</p>
+                </div>
+                <div className="relative z-10 mt-4 font-mono text-sm text-[#0066CE] group-hover:translate-x-2 transition-transform">
+                  View on GitHub →
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl" />
+                <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-l-2xl" />
+              </div>
+            </motion.div>
+
+            {/* WIDE BOTTOM CARD 4 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.01, y: -8, zIndex: 50, transition: { duration: 0.2 } }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="md:col-span-3 group cursor-pointer relative"
+              onClick={() => window.open("#", "_blank")}
+            >
+              <div className="absolute -inset-1 bg-[#0066CE]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+              <div className="relative h-full bg-[#0A0F1A]/80 border border-[#0066CE]/30 group-hover:border-[#0066CE] rounded-2xl transition-all duration-300 p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 min-h-[120px]">
+                <div className="absolute inset-0 bg-[#0066CE]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                <div className="relative z-10 flex items-center gap-6">
+                  <div className="text-[#0066CE] font-mono text-sm">04</div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white group-hover:text-[#0066CE] transition-colors">Project 4</h3>
+                    <p className="text-gray-400 text-sm mt-1">Add your next project here.</p>
+                  </div>
+                </div>
+                <div className="relative z-10 font-mono text-sm text-[#0066CE] group-hover:translate-x-2 transition-transform">
+                  View on GitHub →
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl" />
+                <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-l-2xl" />
+              </div>
+            </motion.div>
+
           </div>
         </div>
       </section>

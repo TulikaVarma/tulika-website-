@@ -43,19 +43,6 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-
-        tech: {
-          blue: {
-            light: '#0066CE',
-            DEFAULT: '#00468C',
-            dark: '#003A67',
-          },
-          dark: {
-            lighter: '#1F2937',
-            DEFAULT: '#111827',
-            darker: '#0A0F1A',
-          }
-        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
       },
@@ -66,5 +53,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")], 
+  plugins: [require("tailwindcss-animate")],
 }

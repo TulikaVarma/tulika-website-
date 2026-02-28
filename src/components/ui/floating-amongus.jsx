@@ -40,6 +40,7 @@ export default function FloatingAmongUs() {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Red */}
       <motion.div
         animate={{ x: amogusPos.x, y: amogusPos.y, rotate: amogusPos.rotate }}
         transition={{ duration: 200, repeat: Infinity, ease: "easeInOut" }}
@@ -48,7 +49,7 @@ export default function FloatingAmongUs() {
       >
         <img src={redAmongUs} alt="" style={{ width: "70px", height: "auto", opacity: 0.85 }} />
       </motion.div>
-
+      {/* Green  */}
       <motion.div
         animate={{ x: amogusPos2.x, y: amogusPos2.y, rotate: amogusPos2.rotate }}
         transition={{ duration: 160, repeat: Infinity, ease: "easeInOut" }}
@@ -57,7 +58,7 @@ export default function FloatingAmongUs() {
       >
         <img src={greenAmongUs} alt="" style={{ width: "85px", height: "auto", opacity: 0.85 }} />
       </motion.div>
-
+      {/* Blue */}
       <motion.div
         animate={{ x: amogusPos3.x, y: amogusPos3.y, rotate: amogusPos3.rotate }}
         transition={{ duration: 180, repeat: Infinity, ease: "easeInOut" }}
@@ -67,8 +68,7 @@ export default function FloatingAmongUs() {
         >
         <img src={blueDead ? blueDeadAmongUs : blueAmongUs} alt="" style={{ width: blueDead ? "60px" : "70px", height: "auto", opacity: 0.85 }} />
       </motion.div>
-
-      {/* Orange - clickable */}
+      {/* Orange  */}
       <motion.div
         animate={{ x: amogusPos4.x, y: amogusPos4.y, rotate: amogusPos4.rotate }}
         transition={{ duration: 220, repeat: Infinity, ease: "easeInOut" }}
@@ -76,9 +76,9 @@ export default function FloatingAmongUs() {
         style={{ top: 0, left: 0, zIndex: 2, pointerEvents: "auto", cursor: "pointer" }}
         onClick={() => setOrangeDead(true)}
       >
-        <img src={orangeDead ? orangeDeadAmongUs : orangeAmongUs} alt="" style={{ width: orangeDead ? "60px" : "80px", height: "auto", opacity: 0.85 }} />
+        <img src={orangeDead ? orangeDeadAmongUs : orangeAmongUs} alt="" style={{ width: orangeDead ? "60px" : "85px", height: "auto", opacity: 0.85 }} />
       </motion.div>
-
+      {/* Cyan */}
       <motion.div
         animate={{ x: amogusPos5.x, y: amogusPos5.y, rotate: amogusPos5.rotate }}
         transition={{ duration: 190, repeat: Infinity, ease: "easeInOut" }}
