@@ -5,11 +5,13 @@ import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 import MainBackground from '@/components/ui/main-background'
 import { StarBackground } from './components/ui/stars-eyes'
-import { useState } from 'react'
+import { useState } from "react";
+import FloatingAmongUs from './components/ui/floating-amongus'
 
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [copied, setCopied] = useState(false);
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -118,16 +120,25 @@ function App() {
           <div className="mb-12">
             <h3 className="text-[#0066CE] text-xl font-mono mb-6">SOCIAL</h3>
             <div className="space-y-3">
-              <a href="#" className="block text-gray-300 hover:text-[#0066CE] transition-colors">Github</a>
-              <a href="#" className="block text-gray-300 hover:text-[#0066CE] transition-colors">Linkedin</a>
+              <a href="https://github.com/TulikaVarma" className="block text-gray-300 hover:text-[#0066CE] transition-colors">Github</a>
+              <a href="https://www.linkedin.com/in/tulika-varma-962165278/?originalSubdomain=ca" className="block text-gray-300 hover:text-[#0066CE] transition-colors">Linkedin</a>
             </div>
           </div>
 
           {/* Email */}
           <div>
+            
             <h3 className="text-[#0066CE] text-xl font-mono mb-6">GET IN TOUCH</h3>
-            <a href="mailto:tulikavarma@gmail.com" className="text-gray-300 hover:text-[#0066CE] transition-colors break-all">
-              tulikaavarma@gmail.com
+            <a href="mailto:tulikavarma@gmail.com" 
+              className="text-gray-300 hover:text-[#0066CE] transition-colors break-all"
+              onClick={(e) => {
+                e.preventDefault(); 
+                navigator.clipboard.writeText("tulikaavarma@gmail.com");
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+              }}
+            >
+              {copied ? "Copied to clipboard" : "tulikaavarma@gmail.com"}
             </a>
           </div>
         </div>
@@ -141,7 +152,7 @@ function App() {
       )}
 
       {/* INTRODUCTION PAGE                                    */}
-      <section className="relative w-full h-screen overflow-hidden">
+      <section id="home" className="relative w-full h-screen overflow-hidden">
         {/* Animated  Background */}
         <MainBackground />
         <StarBackground />
@@ -177,14 +188,14 @@ function App() {
             <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-12 font-light">
               Computer Science | Mathematics
             </p>
-            {/* CTA Button */}
+            {/* CTA Button 
             <div className="flex gap-4 justify-center font-mono mt-8">
               <Button 
                 className="bg-transparent text-white border border-white/20 hover:border-[#0066CE] hover:bg-[#0066CE]/10 hover:text-white px-8 py-6 text-base transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(0,102,206,0.3)]"
               >
                 {'>'} get_resume.sh 
               </Button>
-            </div>
+            </div> */}
           </motion.div>
         </div>
         {/* Scroll Down Indicator */}
@@ -562,22 +573,59 @@ function App() {
       </section>
 
       {/* CONTACT SECTION */}
-      <section id="contact" className="relative w-full min-h-screen bg-[#040409] py-32 px-6 flex items-center z-30">
-        <div className="max-w-7xl mx-auto w-full text-center">
+      <section id="contact" className="relative w-full min-h-screen bg-[#040409] py-32 px-6 flex items-center z-30 overflow-hidden isolate">
+        {/* Floating Among Us */}
+        <FloatingAmongUs/>
+        {/* Rest of the page  */}
+        <div className="max-w-7xl mx-auto w-full text-center relative z-10">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
             <div className="font-mono text-[#0066CE] text-sm mb-4">{'// Get In Touch'}</div>
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-8">
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-4">
               let's <span className="text-[#0066CE]">connect</span>()
             </h2>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center font-mono mb-16">
-              <Button className="bg-[#0066CE] hover:bg-[#00468C] text-white px-10 py-8 text-lg">→ Email Me</Button>
-              <Button variant="outline" className="border-2 border-[#0066CE] text-[#0066CE] hover:bg-[#0066CE]/10 px-10 py-8 text-lg">→ LinkedIn</Button>
+            <p className="text-gray-400 font-mono mb-16 text-sm">Open to internships, research, and collaborations</p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+              
+              {/* Email */}
+              <div
+                className="bg-transparent text-white border border-white/20 hover:border-[#0066CE] hover:bg-[#0066CE]/10 p-8 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(0,102,206,0.3)] font-mono"
+                onClick={() => {
+                  navigator.clipboard.writeText("tulikaavarma@gmail.com");
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                }}
+              >
+                <div className="text-[#0066CE] text-2xl mb-3">✉</div>
+                <div className="text-white font-mono text-sm mb-1">Email</div>
+                <div className="text-gray-400 text-xs font-mono">{copied ? "✓ Copied!" : "tulikaavarma@gmail.com"}</div>
+              </div>
+
+              {/* LinkedIn */}
+              <div
+                className="bg-transparent text-white border border-white/20 hover:border-[#0066CE] hover:bg-[#0066CE]/10 p-8 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(0,102,206,0.3)] font-mono"
+                onClick={() => window.open("https://www.linkedin.com/in/tulika-varma-962165278/", "_blank")}
+              >
+                <div className="text-[#0066CE] text-2xl mb-3">in</div>
+                <div className="text-white font-mono text-sm mb-1">LinkedIn</div>
+                <div className="text-gray-400 text-xs font-mono">tulika-varma</div>
+              </div>
+
+              {/* GitHub */}
+              <div
+                className="bg-transparent text-white border border-white/20 hover:border-[#0066CE] hover:bg-[#0066CE]/10 p-8 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(0,102,206,0.3)] font-mono"
+                onClick={() => window.open("https://github.com/TulikaVarma", "_blank")}
+              >
+                <div className="text-[#0066CE] text-2xl mb-3">{"</>"}</div>
+                <div className="text-white font-mono text-sm mb-1">GitHub</div>
+                <div className="text-gray-400 text-xs font-mono">TulikaVarma</div>
+              </div>
+
             </div>
-            <div className="text-gray-600 font-mono text-sm">© 2026 Tulika // Built with React + Tailwind + Love</div>
           </motion.div>
         </div>
       </section>
