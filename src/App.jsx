@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="relative w-full min-h-screen bg-[#040409] font-sans">
       
-      {/* BACKGROUND ANIMATIONS - Particles Global              */}
+      {/* BACKGROUND ANIMATIONS - Particles Global  */}
       <div className="fixed inset-0 z-40 pointer-events-none">
         <Particles
           className="absolute inset-0"
@@ -31,10 +31,10 @@ function App() {
         />
       </div>
       
-      {/* NAVIGATION BAR - Global                                        */}
+      {/* NAVIGATION BAR - Global */}
       <Navbar scrollToSection={scrollToSection}/>
 
-      {/* INTRODUCTION PAGE                                    */}
+      {/* INTRODUCTION PAGE */}
       <section id="home" className="relative w-full h-screen overflow-hidden">
         {/* Animated  Background */}
         <MainBackground />
@@ -428,131 +428,140 @@ function App() {
             recent<span className="text-[#0066CE]">Work</span>()
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 w-full">
-            {/* LARGE FEATURED CARD */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.02, y: -8, zIndex: 50, transition: { duration: 0.2 } }}
-              viewport={{ once: true }}
-              className="md:col-span-2 md:row-span-2 group cursor-pointer relative"
-              onClick={() => window.open("https://github.com/TulikaVarma/obesity-risk-analysis", "_blank")}
-            >
-              <div className="absolute -inset-1 bg-[#0066CE]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
-              <div className="relative h-full bg-[#0A0F1A]/80 border border-[#0066CE]/30 group-hover:border-[#0066CE] rounded-2xl transition-all duration-300 p-8 flex flex-col justify-between min-h-[320px]">
-                <div className="absolute inset-0 bg-[#0066CE]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="text-[#0066CE] font-mono text-sm">01</div>
-                    <span className="text-xs font-mono text-gray-500 border border-gray-700 px-2 py-1 rounded-full">CMPT 459 · Group Project</span>
-                  </div>
-                  <h3 className="text-3xl font-bold text-white group-hover:text-[#0066CE] transition-colors mb-4">
-                    Obesity Risk Analysis
-                  </h3>
-                  <p className="text-gray-400 leading-relaxed mb-6">
-                    ML pipeline for obesity classification using clustering, outlier detection, and feature selection. Implemented k-NN, Logistic Regression, and Random Forest with hyperparameter tuning.
-                  </p>
-                  <div className="flex flex-wrap gap-2 font-mono">
-                    {["Python", "scikit-learn", "pandas", "DBSCAN", "Random Forest", "LASSO"].map((tag) => (
-                      <span key={tag} className="text-xs text-[#0066CE] border border-[#0066CE]/30 group-hover:border-[#0066CE]/50 group-hover:bg-[#0066CE]/10 px-2 py-1 rounded-lg transition-all duration-300">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="relative z-10 mt-6 font-mono text-sm text-[#0066CE] group-hover:translate-x-2 transition-transform">
-                  View on GitHub →
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl" />
-                <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-l-2xl" />
-              </div>
-            </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
 
-            {/* SMALL CARD 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.02, y: -8, zIndex: 50, transition: { duration: 0.2 } }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="group cursor-pointer relative"
-              onClick={() => window.open("#", "_blank")}
-            >
-              <div className="absolute -inset-1 bg-[#0066CE]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
-              <div className="relative h-full bg-[#0A0F1A]/80 border border-[#0066CE]/30 group-hover:border-[#0066CE] rounded-2xl transition-all duration-300 p-6 flex flex-col justify-between min-h-[150px]">
-                <div className="absolute inset-0 bg-[#0066CE]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="text-[#0066CE] font-mono text-sm">02</div>
-                    <span className="text-xs font-mono text-gray-500 border border-gray-700 px-2 py-1 rounded-full">Coming Soon</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-[#0066CE] transition-colors mb-2">Project 2</h3>
-                  <p className="text-gray-400 text-sm">Add your next project here.</p>
-                </div>
-                <div className="relative z-10 mt-4 font-mono text-sm text-[#0066CE] group-hover:translate-x-2 transition-transform">
-                  View on GitHub →
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl" />
-                <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-l-2xl" />
-              </div>
-            </motion.div>
+            {/* ROW 1 */}
+            <div className="md:col-span-3 grid md:grid-cols-3 gap-4">
 
-            {/* SMALL CARD 3 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.02, y: -8, zIndex: 50, transition: { duration: 0.2 } }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="group cursor-pointer relative"
-              onClick={() => window.open("#", "_blank")}
-            >
-              <div className="absolute -inset-1 bg-[#0066CE]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
-              <div className="relative h-full bg-[#0A0F1A]/80 border border-[#0066CE]/30 group-hover:border-[#0066CE] rounded-2xl transition-all duration-300 p-6 flex flex-col justify-between min-h-[150px]">
-                <div className="absolute inset-0 bg-[#0066CE]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="text-[#0066CE] font-mono text-sm">03</div>
-                    <span className="text-xs font-mono text-gray-500 border border-gray-700 px-2 py-1 rounded-full">Coming Soon</span>
+              {/* OBESITY RISK ANALYSIS */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.02, y: -8, zIndex: 50, transition: { duration: 0.2 } }}
+                viewport={{ once: true }}
+                className="md:col-span-2 group cursor-pointer relative"
+              >
+                <div className="absolute -inset-1 bg-[#0066CE]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                <div className="relative h-full bg-[#0A0F1A]/80 border border-[#0066CE]/30 group-hover:border-[#0066CE] rounded-2xl transition-all duration-300 p-8 flex flex-col justify-between min-h-[280px]">
+                  <div className="absolute inset-0 bg-[#0066CE]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="text-[#0066CE] font-mono text-sm">01</div>
+                      <span className="text-xs font-mono text-gray-500 border border-gray-700 px-2 py-1 rounded-full">CMPT 459 · Group Project</span>
+                    </div>
+                    <h3 className="text-3xl font-bold text-white group-hover:text-[#0066CE] transition-colors mb-4">
+                      Obesity Risk Analysis
+                    </h3>
+                    <p className="text-gray-400 leading-relaxed mb-6">
+                      A full ML pipeline for obesity risk classification. Ingests raw and synthetic survey data, reduces dimensionality with PCA, and benchmarks three clustering algorithms — Hierarchical, DBSCAN, and CLARANS.
+                      Applies k-NN distance, Gaussian Mixture, and Local Outlier Factor to handle class imbalance without discarding rare cases. Lasso Regression with 5-fold CV selects the most predictive features, which feed into k-NN, Logistic Regression, and Random Forest classifiers — all hyperparameter-tuned with GridSearchCV
+                    </p>
+                    <div className="flex flex-wrap gap-2 font-mono">
+                      {["Python", "scikit-learn", "pandas", "DBSCAN", "Random Forest", "LASSO"].map((tag) => (
+                        <span key={tag} className="text-xs text-[#0066CE] border border-[#0066CE]/30 group-hover:border-[#0066CE]/50 group-hover:bg-[#0066CE]/10 px-2 py-1 rounded-lg transition-all duration-300">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-[#0066CE] transition-colors mb-2">Project 3</h3>
-                  <p className="text-gray-400 text-sm">Add your next project here.</p>
+                  <div className="relative z-10 mt-6 flex gap-3 font-mono text-sm">
+                    <span
+                      className="flex items-center gap-1 text-[#0066CE] border border-[#0066CE]/40 hover:bg-[#0066CE]/20 hover:border-[#0066CE] px-3 py-1.5 rounded-lg transition-all duration-200 cursor-pointer"
+                      onClick={(e) => { e.stopPropagation(); window.open("https://github.com/TulikaVarma/obesity-risk-analysis", "_blank"); }}
+                    >
+                      GitHub →
+                    </span>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl" />
+                  <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-l-2xl" />
                 </div>
-                <div className="relative z-10 mt-4 font-mono text-sm text-[#0066CE] group-hover:translate-x-2 transition-transform">
-                  View on GitHub →
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl" />
-                <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-l-2xl" />
-              </div>
-            </motion.div>
+              </motion.div>
 
-            {/* WIDE BOTTOM CARD 4 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.01, y: -8, zIndex: 50, transition: { duration: 0.2 } }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="md:col-span-3 group cursor-pointer relative"
-              onClick={() => window.open("#", "_blank")}
-            >
-              <div className="absolute -inset-1 bg-[#0066CE]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
-              <div className="relative h-full bg-[#0A0F1A]/80 border border-[#0066CE]/30 group-hover:border-[#0066CE] rounded-2xl transition-all duration-300 p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 min-h-[120px]">
-                <div className="absolute inset-0 bg-[#0066CE]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
-                <div className="relative z-10 flex items-center gap-6">
-                  <div className="text-[#0066CE] font-mono text-sm">04</div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-[#0066CE] transition-colors">Project 4</h3>
-                    <p className="text-gray-400 text-sm mt-1">Add your next project here.</p>
+              {/* CLEARDEBT */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.02, y: -8, zIndex: 50, transition: { duration: 0.2 } }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="group cursor-pointer relative"
+              >
+                <div className="absolute -inset-1 bg-[#0066CE]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                <div className="relative h-full bg-[#0A0F1A]/80 border border-[#0066CE]/30 group-hover:border-[#0066CE] rounded-2xl transition-all duration-300 p-6 flex flex-col justify-between min-h-[280px]">
+                  <div className="absolute inset-0 bg-[#0066CE]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="text-[#0066CE] font-mono text-sm">02</div>
+                      <span className="text-xs font-mono text-yellow-400 border border-yellow-400/40 px-2 py-1 rounded-full">🏆 Winner - Best use of Snowflake API</span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white group-hover:text-[#0066CE] transition-colors mb-3">ClearDebt</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                      Built in 24hrs at Mountain Madness 2026. Ingests 90 days of Plaid transaction history into Snowflake, runs a deterministic avalanche/snowball math engine, then passes the user's full debt profile and Google Calendar events to Snowflake Cortex to generate a personalized hybrid repayment plan. Gemini 2.5 Flash predicts spend from calendar events before they happen.
+                    </p>
+                    <div className="flex flex-wrap gap-1 font-mono">
+                      {["React", "FastAPI", "Snowflake", "Gemini", "Plaid"].map((tag) => (
+                        <span key={tag} className="text-xs text-[#0066CE] border border-[#0066CE]/30 group-hover:border-[#0066CE]/50 group-hover:bg-[#0066CE]/10 px-2 py-1 rounded-lg transition-all duration-300">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
+                  <div className="relative z-10 mt-4 flex gap-3 font-mono text-sm">
+                    <span
+                      className="flex items-center gap-1 text-[#0066CE] border border-[#0066CE]/40 hover:bg-[#0066CE]/20 hover:border-[#0066CE] px-3 py-1.5 rounded-lg transition-all duration-200 cursor-pointer"
+                      onClick={(e) => { e.stopPropagation(); window.open("https://github.com/TulikaVarma/clear-debt", "_blank"); }}
+                    >
+                      GitHub →
+                    </span>
+                    <span
+                      className="flex items-center gap-1 text-[#0066CE] border border-[#0066CE]/40 hover:bg-[#0066CE]/20 hover:border-[#0066CE] px-3 py-1.5 rounded-lg transition-all duration-200 cursor-pointer "
+                      onClick={(e) => { e.stopPropagation(); window.open("https://devpost.com/software/cleardebt", "_blank"); }}
+                    >
+                      Devpost ↗
+                    </span>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl" />
+                  <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-l-2xl" />
                 </div>
-                <div className="relative z-10 font-mono text-sm text-[#0066CE] group-hover:translate-x-2 transition-transform">
-                  View on GitHub →
+              </motion.div>
+            </div>
+
+            {/* ROW 2: 3 placeholder cards */}
+            {[
+              { num: "03", delay: 0.2 },
+              { num: "04", delay: 0.3 },
+              { num: "05", delay: 0.4 },
+            ].map(({ num, delay }) => (
+              <motion.div
+                key={num}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.02, y: -8, zIndex: 50, transition: { duration: 0.2 } }}
+                viewport={{ once: true }}
+                transition={{ delay }}
+                className="group relative"
+              >
+                <div className="absolute -inset-1 bg-[#0066CE]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                <div className="relative h-full bg-[#0A0F1A]/80 border border-[#0066CE]/30 group-hover:border-[#0066CE] rounded-2xl transition-all duration-300 p-6 flex flex-col justify-between min-h-[150px]">
+                  <div className="absolute inset-0 bg-[#0066CE]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="text-[#0066CE] font-mono text-sm">{num}</div>
+                      <span className="text-xs font-mono text-gray-500 border border-gray-700 px-2 py-1 rounded-full">Coming Soon</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">Project {num}</h3>
+                    <p className="text-gray-400 text-sm">Add your next project here.</p>
+                  </div>
+                  <div className="relative z-10 mt-4 flex gap-3 font-mono text-sm">
+                    <span className="flex items-center gap-1 text-gray-600 border border-gray-700 px-3 py-1.5 rounded-lg cursor-not-allowed">
+                      GitHub →
+                    </span>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl" />
+                  <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-l-2xl" />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl" />
-                <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-[#0066CE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-l-2xl" />
-              </div>
-            </motion.div>
+              </motion.div>
+            ))}
 
           </div>
         </div>
