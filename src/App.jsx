@@ -241,7 +241,7 @@ function App() {
             {[
               { 
                 title: "Languages", 
-                skills: ["Python", "C++", "SQL", "RISC-V", "JavaScript", "Bash/Shell"], 
+                skills: ["Python", "C++", "SQL", "JavaScript", "TypeScript", "RISC-V", "Bash/Shell"], 
                 icon: "{ }",
                 color: "from-blue-600/30 to-cyan-600/30",
                 borderColor: "border-blue-500/50",
@@ -257,7 +257,7 @@ function App() {
               },
               { 
                 title: "Tools & DevOps", 
-                skills: ["Git", "Docker", "Linux", "VS Code", "LaTeX", "MATLAB"], 
+                skills: ["Git", "Docker", "Linux", "Vercel", "DigitalOcean", "VS Code", "LaTeX", "MATLAB"], 
                 icon: "🔧",
                 color: "from-blue-400/30 to-cyan-400/30",
                 borderColor: "border-blue-300/50",
@@ -271,15 +271,23 @@ function App() {
                 borderColor: "border-blue-200/50",
                 layer: 4
               },
+              { 
+                title: "APIs & Cloud", 
+                skills: ["Snowflake", "Snowflake Cortex", "Plaid", "Gemini", "Google OAuth", "Google Calendar API", "FastAPI"], 
+                icon: "☁️",
+                color: "from-cyan-400/30 to-blue-400/30",
+                borderColor: "border-cyan-300/50",
+                layer: 5
+              },
             ].map((category, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 100, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{ 
-                  delay: index * 0.2,
-                  duration: 0.6,
+                  delay: index * 0.08,
+                  duration: 0.4,
                   ease: "easeOut"
                 }}
                 style={{
@@ -291,7 +299,7 @@ function App() {
                 <div 
                   className="absolute -inset-4 bg-[#0066CE]/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{
-                    transform: `translateY(${(4 - index) * 8}px)`,
+                    transform: `translateY(${(5 - index) * 8}px)`,
                   }}
                 />
                 
@@ -307,7 +315,7 @@ function App() {
                   transform hover:-translate-y-12 hover:scale-105
                 `}
                 style={{
-                  boxShadow: `0 ${(4 - index) * 4}px ${(4 - index) * 20}px rgba(0, 102, 206, ${0.1 + index * 0.05})`
+                  boxShadow: `0 ${(5 - index) * 4}px ${(5 - index) * 20}px rgba(0, 102, 206, ${0.1 + index * 0.05})`
                 }}
                 >
                   {/* Animated gradient background */}
@@ -345,7 +353,7 @@ function App() {
                       
                       {/* Stack indicator */}
                       <div className="flex flex-col gap-1 opacity-30 group-hover:opacity-100 transition-opacity">
-                        {[...Array(4)].map((_, i) => (
+                        {[...Array(5)].map((_, i) => (
                           <div 
                             key={i}
                             className={`h-1 rounded-full transition-all duration-300 ${
@@ -399,7 +407,7 @@ function App() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0066CE]/10 border border-[#0066CE]/30">
               <div className="flex gap-1">
-                {[...Array(4)].map((_, i) => (
+                {[...Array(5)].map((_, i) => (
                   <div 
                     key={i}
                     className="w-2 h-2 rounded-full bg-[#0066CE]"
@@ -411,7 +419,7 @@ function App() {
                 ))}
               </div>
               <span className="font-mono text-xs text-[#0066CE]">
-                4 Layers Deep
+                5 Layers Deep
               </span>
             </div>
           </motion.div>
